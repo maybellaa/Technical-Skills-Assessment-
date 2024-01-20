@@ -1,0 +1,120 @@
+1. Get User from page 3.
+  Curl: 
+curl -X 'GET' \
+  'https://reqres.in/api/users?page=3' \
+  -H 'accept: application/json'
+  Response:
+{
+  "page": 3,
+  "per_page": 6,
+  "total": 12,
+  "total_pages": 2,
+  "data": [],
+  "support": {
+    "url": "https://reqres.in/#support-heading",
+    "text": "To keep ReqRes free, contributions towards server costs are appreciated!"
+  }
+}
+
+2. Get a Single User with ID 10.
+Curl:
+curl -X 'GET' \
+  'https://reqres.in/api/users/10' \
+  -H 'accept: application/json'
+Response:
+{
+  "data": {
+    "id": 10,
+    "email": "byron.fields@reqres.in",
+    "first_name": "Byron",
+    "last_name": "Fields",
+    "avatar": "https://reqres.in/img/faces/10-image.jpg"
+  },
+  "support": {
+    "url": "https://reqres.in/#support-heading",
+    "text": "To keep ReqRes free, contributions towards server costs are appreciated!"
+  }
+}
+
+3. Register successful.
+Curl:
+curl -X 'POST' \
+  'https://reqres.in/api/register' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "email": "byron.fields@reqres.in",
+  "password": "pistol"
+}'
+
+Response:
+{
+  "id": 10,
+  "token": "QpwL5tke4Pnpja7X10"
+}
+
+4. 
+CASE 1
+curl:
+curl -X 'POST' \
+  'https://reqres.in/api/register' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "password": 123
+}'
+Response:
+{
+  "error": "Missing email or username"
+}
+
+CASE 2
+Curl:
+curl -X 'POST' \
+  'https://reqres.in/api/register' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "email": "janet.weaver@reqres.in"
+}'
+Response:
+{
+  "error": "Missing password"
+}
+
+CASE 3
+Curl:
+curl -X 'POST' \
+  'https://reqres.in/api/register' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "email": "janet.weaver",
+  "password": 123
+}'
+Response:
+{
+  "error": "Note: Only defined users succeed registration"
+}
+
+CASE 4
+Curl:
+curl -X 'POST' \
+  'https://reqres.in/api/register' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "email": "janet.weaver@reqres.in,
+  "password": 123
+}'
+Response:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Bad Request</pre>
+</body>
+</html>
